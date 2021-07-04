@@ -19,13 +19,15 @@
         android:layout_height="wrap_content"
         android:text="TextView1"
         android:textSize="30sp"
+        android:tag="textview1"
         android:layout_margin="20dp"/>
 
     <TextView
         android:id="@+id/textview2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView1"
+        android:text="TextView2"
+        android:tag="textview1"
         android:textSize="30sp"
         android:layout_margin="20dp"/>
 
@@ -33,7 +35,8 @@
         android:id="@+id/textview3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView1"
+        android:text="TextView3"
+        android:tag="textview1"
         android:textSize="30sp"
         android:layout_margin="20dp"/>
 
@@ -41,7 +44,8 @@
         android:id="@+id/textview4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView1"
+        android:text="TextView4"
+        android:tag="textview1"
         android:textSize="30sp"
         android:layout_margin="20dp"/>
 

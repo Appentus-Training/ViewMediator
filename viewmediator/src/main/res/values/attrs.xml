@@ -2,5 +2,6 @@
 <resources>
     <declare-styleable name="ViewMediator">
         <attr name="vm_reference_ids" format="string"/>
+        <attr name="vm_canSelect" format="integer"/>
     </declare-styleable>
 </resources>

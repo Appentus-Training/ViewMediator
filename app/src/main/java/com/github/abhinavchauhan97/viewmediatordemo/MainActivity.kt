@@ -26,6 +26,11 @@ class MainActivity : AppCompatActivity() {
                     textView.setTextColor(Color.GREEN)
             }
 
+            override fun onSelectedViewReClick(reClickedView: View) {
+                val textView = reClickedView as TextView
+                textView.setTextColor(Color.RED)
+            }
+
         }
     }
 }
