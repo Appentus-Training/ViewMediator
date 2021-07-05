@@ -134,7 +134,3 @@ That above pattern greatly simplyfies the situatation where you have to select o
                 // here you can make it look like it a unselected view should look like
             }
         }
-
-
-
-
