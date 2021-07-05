@@ -81,7 +81,7 @@ In above xml pay attention to
         }
     }
     
-That above pattern greatly simplyfies the situatation where you have to select one option from many , normally you will setup a click listener you on all of them and whenere a view is cliked you manually update that view and other views , the problem with that approach is that all views have to know about other views you can not add or remove views in the layout wihtout breaking exsiting code, means the code is never closed for modification (a violation of [](https://en.wikipedia.org/wiki/SOLID) )  
+That above pattern greatly simplyfies the situatation where you have to select one option from many , normally you will setup a click listener you on all of them and whenere a view is cliked you manually update that view and other views , the problem with that approach is that all views have to know about other views you can not add or remove views in the layout wihtout breaking exsiting code, means the code is never closed for modification (a violation of [SOLID](https://en.wikipedia.org/wiki/SOLID) )  
 
 
 With ViewMediator views do not have to know about each other you can add/remove any number of views just in the layout and everything will work the same as if were before  and you don't have to touch existing code for that.
