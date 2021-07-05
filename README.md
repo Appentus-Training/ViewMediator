@@ -123,6 +123,7 @@ That above pattern greatly simplyfies the situatation where you have to select o
             }
 
             override fun onLimitReached() { 
+               Toast.makeText(this@MainActivity,"can not select more than 2 options",Toast.LENGTH_LONG).show()
                 // when the limit is reached this callback is called , in this example we have app:vm_canSelect="2" so when user clicks third view this callback will be called may be you want to show a message saying you cannot select more that two options , you do it here
             }
 
