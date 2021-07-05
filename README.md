@@ -1,7 +1,7 @@
 # ViewMediator
 simple library to deliver events between the views , currently only click event is supported
 
-#Usage 
+# Usage 
 
  <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -50,3 +50,5 @@ simple library to deliver events between the views , currently only click event 
         android:layout_margin="20dp"/>
 
 </LinearLayout>
+
+

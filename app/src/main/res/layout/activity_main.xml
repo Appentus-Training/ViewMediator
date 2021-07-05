@@ -11,6 +11,7 @@
         android:id="@+id/mediator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:vm_default_reference_ids="textview2"
         app:vm_reference_ids="textview1,textview2,textview3,textview4"/>
 
     <TextView
@@ -19,7 +20,6 @@
         android:layout_height="wrap_content"
         android:text="TextView1"
         android:textSize="30sp"
-        android:tag="textview1"
         android:layout_margin="20dp"/>
 
     <TextView
@@ -27,7 +27,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView2"
-        android:tag="textview1"
         android:textSize="30sp"
         android:layout_margin="20dp"/>
 
@@ -36,7 +35,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView3"
-        android:tag="textview1"
         android:textSize="30sp"
         android:layout_margin="20dp"/>
 
@@ -45,7 +43,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView4"
-        android:tag="textview1"
         android:textSize="30sp"
         android:layout_margin="20dp"/>
 

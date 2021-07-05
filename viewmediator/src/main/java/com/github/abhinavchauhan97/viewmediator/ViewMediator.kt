@@ -15,6 +15,7 @@ import java.util.*
 class ViewMediator(context: Context, attributeSet: AttributeSet) : View(context, attributeSet) {
 
     private lateinit var stringIds: List<String>
+    private lateinit var defaultSelectedViewsStringIds:List<String>
     private val referencedViews = LinkedList<View>()
     private val clickedViews: Array<View?>
     var clicksMediator: ClicksMediator? = null
@@ -22,12 +23,23 @@ class ViewMediator(context: Context, attributeSet: AttributeSet) : View(context,
 
     init {
         val ta = context.obtainStyledAttributes(attributeSet, R.styleable.ViewMediator, 0, 0)
-        canSelect = ta.getInt(R.styleable.ViewMediator_vm_canSelect, 1)
-        clickedViews = Array(canSelect) { null }
+
         val allIdsString = ta.getString(R.styleable.ViewMediator_vm_reference_ids)
         if (allIdsString != null) {
             extractStringIds(allIdsString)
         }
+
+        canSelect = ta.getInt(R.styleable.ViewMediator_vm_canSelect, 1)
+        if(canSelect < 1 || canSelect > stringIds.size) {
+            throw  IllegalArgumentException("value of canSelect can only be greater that zero and less than or equal  total number of referenced ids")
+        }
+        clickedViews = Array(canSelect) { null }
+
+        val defaultSelectedViewsIdString = ta.getString(R.styleable.ViewMediator_vm_default_reference_ids)
+        if(defaultSelectedViewsIdString != null){
+            extractDefaultStringIds(defaultSelectedViewsIdString)
+        }
+
         ta.recycle()
     }
 
@@ -35,15 +47,36 @@ class ViewMediator(context: Context, attributeSet: AttributeSet) : View(context,
         stringIds = allIdsString.split(",")
     }
 
+    private fun extractDefaultStringIds(defaultStringIds:String){
+        defaultSelectedViewsStringIds = defaultStringIds.split(",")
+    }
+
+
     override fun onAttachedToWindow() {
         super.onAttachedToWindow()
         extractReferencedViews()
+        extractDefaultSelectedViews()
         setupViews()
+    }
+
+    private fun extractDefaultSelectedViews(){
+        defaultSelectedViewsStringIds.forEach {
+            val id = resources.getIdentifier(it, "id", context.packageName)
+            if (id == 0) {
+                throw IllegalArgumentException("there is not view with id $it")
+            }
+            if (id == this.id) {
+                throw  IllegalStateException("ViewMediator can not have reference id of its own")
+            }
+            val view = findViewInParent(id)
+            storeInClickedViews(view)
+        }
+        performActionOnClickedViews()
+        performActionOnOtherViews()
     }
 
     private fun extractReferencedViews() {
         stringIds.forEach {
-
             val id = resources.getIdentifier(it, "id", context.packageName)
             if (id == 0) {
                 throw IllegalArgumentException("there is not view with id $it")
