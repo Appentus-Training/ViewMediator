@@ -81,9 +81,9 @@ I hope you got  that user can select on laguage when he click on some laguage th
  
  <h3> Lesson </h3> 
  
-  Clients love changes , in above code if we think we are ever going to have those there languages then it is silly because change is inevitable , it is very easy for clients to say now it don't want that but that , do this instead of that , put that thing in the app etc ,  as responsible developers it is also our responsibility to safeguard ourselves from these kind of situations , the only solution is write  ![This](https://github.com/AbhinavChauhan97/ValidationNotifierEditText) library also helps in that , check out
+  Clients love changes , in above code if we think we are ever going to have those there languages then it is silly because change is inevitable , it is very easy for clients to say now it don't want that but that , do this instead of that , put that thing in the app etc ,  as responsible developers it is also our responsibility to safeguard ourselves from these kind of situations , the only solution is write  [SOLID](https://en.wikipedia.org/wiki/SOLID) code , [This](https://github.com/AbhinavChauhan97/ValidationNotifierEditText) library also helps in writing  [SOLID](https://en.wikipedia.org/wiki/SOLID) code, check out
   
-  **But now let us solve above problem for all and let me introduce ** _*View Mediator**
+  **But now let us solve above problem for all and let me introduce **   _*View Mediator*_
 
 <h1> Usage </h1>
 
@@ -165,10 +165,10 @@ In above xml pay attention to
         }
     }
     
-That above pattern greatly simplyfies the situatation where you have to select one option from many , normally you will setup a click listener on all of them and whenere a view is cliked you manually update that view and other views , the problem with that approach is that all views have to know about other views you can not add or remove views in the layout wihtout breaking exsiting code, means the code is never closed for modification (a violation of [SOLID](https://en.wikipedia.org/wiki/SOLID) )  
+That above pattern greatly simplyfies the situatation where you have to select one option from many , normally you will setup a click listener on all of them and whenere a view is cliked you manually update that view and other views , the problem with that approach is that all views have to know about other views **Violation of** [Principle of Least Knowledge](https://en.wikipedia.org/wiki/Law_of_Demeter) you can not add or remove views in the layout wihtout breaking exsiting code, means the code is never closed for modification (a violation of [SOLID](https://en.wikipedia.org/wiki/SOLID) )  
 
 
-**With ViewMediator views do not have to know about each other you can add/remove any number of views just in the layout and everything will work the same as if were before  and you don't have to touch existing code for that.**
+**With ViewMediator views do not have to know about each other you can add/remove any number of views just in the layout and everything will work the same as it were before  and you don't have to touch existing code for that.**
 
  Just add the id of new view  `app:vm_reference_ids="textview1,textview2,textview3,textview4,newView1,newView2"`
  
@@ -181,7 +181,7 @@ That above pattern greatly simplyfies the situatation where you have to select o
  
  <h1> MultiSelect Support </h1> 
  
- In a group of views many times you don't just want to select only one , you may want to give option to select two , or there or any number , now you want to limit the selection for that number of views so that when your has selected that many options for example 2 you want don't want to let them select more they only can select any other option if the de-select an already selected option by click on it again , fortunately ViewMediator  also supports this
+ In a group of views many times you don't just want to select only one , you may want to give option to select two , or there or any number , now you want to limit the selection for that number of views so that when user has selected that many options for example 2 you want don't want to let them select more they only can select any other option if they select an already selected option by click on it again ,The ViewMediator  also supports that
  
 **just one more attribute for that**  `app:vm_canSelect="2"` by the default value is 1 for the value of one we do normal selection 
 
