@@ -9,6 +9,10 @@ simple library to deliver events between the views , currently only click event 
 
 __first see the ui__
 
+![](https://github.com/AbhinavChauhan97/ViewMediator/blob/master/Screenshot%20(70).png)
+![](https://github.com/AbhinavChauhan97/ViewMediator/blob/master/Screenshot%20(71).png)
+
+
 
 
 <h1> Usage </h1>
