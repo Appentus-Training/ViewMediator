@@ -76,7 +76,11 @@ I hope you got  that user can select on laguage when he click on some laguage th
  <i> Well there are many problems </i> 
  
  -It looks horrrible 
+ 
+ 
  -It is not closed for modificaion (If tomorrow we want to add another language this code is going to break , first of all another branch for `when(index)` will be introduced   in the `makeSelection()` method. And all exising braches  will have some more lines 
+ 
+ 
  -This kind of UI is very common when user make some selection , once or more in almost all apps so we shouldn't be doing this everwhere , we should find a better solution to apply everywhere
  
  <h3> Lesson </h3> 
