@@ -165,6 +165,8 @@ In above xml pay attention to
         }
     }
     
+  ![](https://github.com/AbhinavChauhan97/ViewMediator/blob/master/ezgif.com-gif-maker.gif (1))
+    
 That above pattern greatly simplyfies the situatation where you have to select one option from many , normally you will setup a click listener on all of them and whenere a view is cliked you manually update that view and other views , the problem with that approach is that all views have to know about other views **Violation of** [Principle of Least Knowledge](https://en.wikipedia.org/wiki/Law_of_Demeter) you can not add or remove views in the layout wihtout breaking exsiting code, means the code is never closed for modification (a violation of [Open Closed Principle](https://en.wikipedia.org/wiki/Open%E2%80%93closed_principle) )  
 
 
@@ -224,3 +226,5 @@ That above pattern greatly simplyfies the situatation where you have to select o
                 // here you can make it look like it a unselected view should look like
             }
         }
+        
+ ![](https://github.com/AbhinavChauhan97/ViewMediator/blob/master/ezgif.com-gif-maker.gif)       
