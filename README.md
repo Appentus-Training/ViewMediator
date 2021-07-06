@@ -1,5 +1,15 @@
 # ViewMediator
+
+
 simple library to deliver events between the views , currently only click event is supported
+
+<h1> Why </h1>
+
+**To convice you for using this library or similar approach let me show you some code , that i wrote few months ago**
+
+__first see the ui__
+
+
 
 <h1> Usage </h1>
 
@@ -88,6 +98,12 @@ That above pattern greatly simplyfies the situatation where you have to select o
 
  Just add the id of new view  `app:vm_reference_ids="textview1,textview2,textview3,textview4,newView1,newView2"`
  
+ <h2> Default Selection </h2>
+ 
+ add  `app:vm_default_reference_ids="textview2,textview3"` to select some view by default means when the group of refereced views appear on screen the views with the given    ids are selected by default appying the selected  unselected behaviour by given implementation of `ClicksMediator` 
+ 
+     
+     
  
  <h1> MultiSelect Support </h1> 
  
