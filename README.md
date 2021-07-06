@@ -12,8 +12,78 @@ __first see the ui__
 ![](https://github.com/AbhinavChauhan97/ViewMediator/blob/master/Screenshot%20(70).png)
 ![](https://github.com/AbhinavChauhan97/ViewMediator/blob/master/Screenshot%20(71).png)
 
+I hope you got  that use can select on laguage when he click on some laguage then some colors changes of selected langaue and also of other languges of they were selected previosly to show then unselected , now see the code to achive that , and it is the best i could do , i could be worse 
 
+      rlEnglish.setOnClickListener {
+            makeSelection(0,true)
+        }
+        rlFrench.setOnClickListener {
+            makeSelection(1,true)
+        }
+        rlSpanish.setOnClickListener {
+            makeSelection(2,true)
+        }
+        
+        
+        private fun makeSelection(index: Int,isClicked:Boolean) {
+        when (index) {
+            0 -> {
+                rlEnglish.background = ContextCompat.getDrawable(this, R.drawable.btn_shape)
+                rlFrench.background = ContextCompat.getDrawable(this, R.drawable.shape_uncheck)
+                rlSpanish.background = ContextCompat.getDrawable(this, R.drawable.shape_uncheck)
+                tvEnglish.setTextColor(ContextCompat.getColor(this, R.color.intro_white))
+                tvFrench.setTextColor(ContextCompat.getColor(this, R.color.black))
+                tvSpanish.setTextColor(ContextCompat.getColor(this, R.color.black))
+                ivCheck_english.isVisible = true
+                ivCheck_French.isVisible = false
+                ivCheck_Spanish.isVisible = false
+                language = tvEnglish.text.toString()
+            }
 
+            1 -> {
+                rlEnglish.background = ContextCompat.getDrawable(this, R.drawable.shape_uncheck)
+                rlFrench.background = ContextCompat.getDrawable(this, R.drawable.btn_shape)
+                rlSpanish.background = ContextCompat.getDrawable(this, R.drawable.shape_uncheck)
+                tvFrench.setTextColor(ContextCompat.getColor(this, R.color.intro_white))
+                tvEnglish.setTextColor(ContextCompat.getColor(this, R.color.black))
+                tvSpanish.setTextColor(ContextCompat.getColor(this, R.color.black))
+                ivCheck_english.isVisible = false
+                ivCheck_French.isVisible = true
+                ivCheck_Spanish.isVisible = false
+                language =  tvFrench.text.toString()
+            }
+            2 -> {
+                rlEnglish.background = ContextCompat.getDrawable(this, R.drawable.shape_uncheck)
+                rlFrench.background = ContextCompat.getDrawable(this, R.drawable.shape_uncheck)
+                rlSpanish.background = ContextCompat.getDrawable(this, R.drawable.btn_shape)
+                tvSpanish.setTextColor(ContextCompat.getColor(this, R.color.intro_white))
+                tvEnglish.setTextColor(ContextCompat.getColor(this, R.color.black))
+                tvFrench.setTextColor(ContextCompat.getColor(this, R.color.black))
+                ivCheck_english.isVisible = false
+                ivCheck_French.isVisible = false
+                ivCheck_Spanish.isVisible = true
+                language =  tvSpanish.text.toString()
+            }
+
+        }
+
+    }
+    
+    
+ **Does above code works?**  <i>YES</i> 
+ **Then What is the problem ?**
+ 
+ <i> Well there are many problems </i> 
+ 
+ -It looks horrrible 
+ -It is not closed for modificaion (If tomorrow we want to add another language this code is going to break , first of all another branch for `when(index)` will be introduced   in the `makeSelection()` method and all exising brach will have some more lines 
+ -This kind of UI is very common when user make some selection , once or more in almost all apps so we shouldn't be doing this everwhere , we should find a better solution to appy everywhere
+ 
+ <h3> Lesson </h3> 
+ 
+  Clients love changes , in above code if will think we ever going to have those there languages then it is silly because change is inavitable , it is very easy for clients to say now it don't want that but that , do this instead of that , put that thing in the app etc ,  as responsible developers it is also our responsibility to safeguard ourselves from these kind of situations , ![This](https://github.com/AbhinavChauhan97/ValidationNotifierEditText) library also helps in that , check out
+  
+  **But now let us solve above problem for all and let me introduce ** _*View Mediator**
 
 <h1> Usage </h1>
 
