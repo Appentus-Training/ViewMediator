@@ -49,11 +49,20 @@ class ViewMediator(context: Context, attributeSet: AttributeSet) : View(context,
             throw  IllegalArgumentException("value of canSelect(max selection) can only be greater that zero and less than or equal total number of referenced ids")
         }
     }
+
+    /**
+     * adds a view for mediation
+     * @throws IllegalAccessException if ViewMediator is already attached to the window
+     */
     fun addView(view: View) {
         ensureNotAttachedToWindow()
         referencedViews.add(view)
     }
 
+    /**
+     * selects a view by default
+     * @throws IllegalAccessException if ViewMediator is already attached to the window
+     */
     fun addDefaultSelectedView(view:View){
         ensureNotAttachedToWindow()
         storeInClickedViews(view)
