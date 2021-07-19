@@ -14,43 +14,63 @@ import java.util.*
 
 class ViewMediator(context: Context, attributeSet: AttributeSet) : View(context, attributeSet) {
 
-    private lateinit var stringIds: List<String>
-    private lateinit var defaultSelectedViewsStringIds:List<String>
+    private var stringIds: List<String>
+    private var defaultSelectedViewsStringIds: List<String>
     private val referencedViews = LinkedList<View>()
-    private val clickedViews: Array<View?>
+    private var clickedViews: Array<View?>
     var clicksMediator: ClicksMediator? = null
-    var canSelect = 1
+    var maxSelection = 1
+    set(value) {
+        field = value
+        clickedViews = Array(value){null}
+    }
 
     init {
+        stringIds = LinkedList()
+        defaultSelectedViewsStringIds = LinkedList()
         val ta = context.obtainStyledAttributes(attributeSet, R.styleable.ViewMediator, 0, 0)
-
         val allIdsString = ta.getString(R.styleable.ViewMediator_vm_reference_ids)
         if (allIdsString != null) {
             extractStringIds(allIdsString)
         }
-
-        canSelect = ta.getInt(R.styleable.ViewMediator_vm_canSelect, 1)
-        if(canSelect < 1 || canSelect > stringIds.size) {
-            throw  IllegalArgumentException("value of canSelect can only be greater that zero and less than or equal  total number of referenced ids")
-        }
-        clickedViews = Array(canSelect) { null }
-
-        val defaultSelectedViewsIdString = ta.getString(R.styleable.ViewMediator_vm_default_reference_ids)
-        if(defaultSelectedViewsIdString != null){
+        maxSelection = ta.getInt(R.styleable.ViewMediator_vm_canSelect, 1)
+        validateMaxSelection()
+        clickedViews = Array(maxSelection) { null }
+        val defaultSelectedViewsIdString =
+            ta.getString(R.styleable.ViewMediator_vm_default_reference_ids)
+        if (defaultSelectedViewsIdString != null) {
             extractDefaultStringIds(defaultSelectedViewsIdString)
         }
-
         ta.recycle()
     }
 
+    private fun validateMaxSelection(){
+        if (stringIds.isNotEmpty() && (maxSelection < 1 || maxSelection > stringIds.size)) {
+            throw  IllegalArgumentException("value of canSelect(max selection) can only be greater that zero and less than or equal total number of referenced ids")
+        }
+    }
+    fun addView(view: View) {
+        ensureNotAttachedToWindow()
+        referencedViews.add(view)
+    }
+
+    fun addDefaultSelectedView(view:View){
+        ensureNotAttachedToWindow()
+        storeInClickedViews(view)
+    }
+
+    private fun ensureNotAttachedToWindow(){
+        if (isAttachedToWindow) {
+            throw  IllegalStateException("cannot call this method after the ViewMediator is visible of screen")
+        }
+    }
     private fun extractStringIds(allIdsString: String) {
         stringIds = allIdsString.split(",")
     }
 
-    private fun extractDefaultStringIds(defaultStringIds:String){
+    private fun extractDefaultStringIds(defaultStringIds: String) {
         defaultSelectedViewsStringIds = defaultStringIds.split(",")
     }
-
 
     override fun onAttachedToWindow() {
         super.onAttachedToWindow()
@@ -59,7 +79,7 @@ class ViewMediator(context: Context, attributeSet: AttributeSet) : View(context,
         setupViews()
     }
 
-    private fun extractDefaultSelectedViews(){
+    private fun extractDefaultSelectedViews() {
         defaultSelectedViewsStringIds.forEach {
             val id = resources.getIdentifier(it, "id", context.packageName)
             if (id == 0) {
@@ -120,7 +140,7 @@ class ViewMediator(context: Context, attributeSet: AttributeSet) : View(context,
     }
 
     private fun storeInClickedViews(view: View) {
-        if (canSelect == 1) {
+        if (maxSelection == 1) {
             clickedViews[0] = view
             return
         }
@@ -153,7 +173,7 @@ class ViewMediator(context: Context, attributeSet: AttributeSet) : View(context,
     private fun fromClickedViews(view: View) = clickedViews.contains(view)
 
     private fun removeFromClickedViews(view: View) {
-        for(i in clickedViews.indices){
+        for (i in clickedViews.indices) {
             if (clickedViews[i] == view) {
                 clickedViews[i] = null
             }

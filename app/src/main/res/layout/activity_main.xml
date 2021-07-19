@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    android:id="@+id/container"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,41 +11,40 @@
 
     <com.github.abhinavchauhan97.viewmediator.ViewMediator
         android:id="@+id/mediator"
+        app:vm_canSelect="3"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:vm_default_reference_ids="textview2"
-        app:vm_reference_ids="textview1,textview2,textview3,textview4"/>
+        android:layout_height="wrap_content"/>
 
-    <TextView
-        android:id="@+id/textview1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView1"
-        android:textSize="30sp"
-        android:layout_margin="20dp"/>
+<!--    <TextView-->
+<!--        android:id="@+id/textview1"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="TextView1"-->
+<!--        android:textSize="30sp"-->
+<!--        android:layout_margin="20dp"/>-->
 
-    <TextView
-        android:id="@+id/textview2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView2"
-        android:textSize="30sp"
-        android:layout_margin="20dp"/>
+<!--    <TextView-->
+<!--        android:id="@+id/textview2"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="TextView2"-->
+<!--        android:textSize="30sp"-->
+<!--        android:layout_margin="20dp"/>-->
 
-    <TextView
-        android:id="@+id/textview3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView3"
-        android:textSize="30sp"
-        android:layout_margin="20dp"/>
+<!--    <TextView-->
+<!--        android:id="@+id/textview3"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="TextView3"-->
+<!--        android:textSize="30sp"-->
+<!--        android:layout_margin="20dp"/>-->
 
-    <TextView
-        android:id="@+id/textview4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView4"
-        android:textSize="30sp"
-        android:layout_margin="20dp"/>
+<!--    <TextView-->
+<!--        android:id="@+id/textview4"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="TextView4"-->
+<!--        android:textSize="30sp"-->
+<!--        android:layout_margin="20dp"/>-->
 
 </LinearLayout>

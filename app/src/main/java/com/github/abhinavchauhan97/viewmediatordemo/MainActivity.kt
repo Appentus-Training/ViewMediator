@@ -3,7 +3,9 @@ package com.github.abhinavchauhan97.viewmediatordemo
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import com.github.abhinavchauhan97.viewmediator.ClicksMediator
@@ -15,6 +17,21 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val mediator = findViewById<ViewMediator>(R.id.mediator) // get reference to view mediator
+        for(i in 0..5){
+            val textview = layoutInflater.inflate(R.layout.textview,findViewById(R.id.container),false)
+            findViewById<LinearLayout>(R.id.container).addView(textview)
+            mediator.addView(textview)
+            if(i == 3){
+                mediator.addDefaultSelectedView(textview)
+            }
+        }
+        mediator.maxSelection = 5
+//        mediator.addView(findViewById(R.id.textview1))
+//        mediator.addView(findViewById(R.id.textview2))
+//        mediator.addView(findViewById(R.id.textview3))
+//        mediator.addView(findViewById(R.id.textview4))
+//        mediator.addDefaultSelectedView(findViewById(R.id.textview3))
+//        mediator.addDefaultSelectedView(findViewById(R.id.textview1))
 
         mediator.clicksMediator = object : ClicksMediator{  // and setup the callback
             override fun doWithOtherViews(otherViews: List<View>) { // here you get all the views except the clicked/selected view
