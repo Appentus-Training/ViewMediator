@@ -236,6 +236,6 @@ That above pattern greatly simplyfies the situatation where you have to select o
         
  ![](https://github.com/AbhinavChauhan97/ViewMediator/blob/master/ezgif.com-gif-maker.gif)  
  
- __Version 1.0.5__   ( 10-july-2021) 
+ __Version 1.0.1__   ( 19-july-2021) 
  
  * programmatically add views to `ViewMediator` using  `addView(View)` and `addDefaultSelectedView(View)` methods
