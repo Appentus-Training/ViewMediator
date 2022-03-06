@@ -92,7 +92,7 @@ I hope you got  that user can select on laguage when he click on some laguage th
 <h1> Usage </h1>
 
 
-    implementation 'com.github.AbhinavChauhan97:ViewMediator:1.0.1'
+    implementation 'com.github.AbhinavChauhan97:ViewMediator:1.0.2'
 
  <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
